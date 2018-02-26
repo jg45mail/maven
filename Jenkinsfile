@@ -1,6 +1,7 @@
 pipeline {
-    agent any
-
+    agent {
+        docker { image 'node:7-alpine' }
+    }
     stages {
         stage('Build') {
             steps {
@@ -11,6 +12,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing..'
+                sh 'node --version'
             }
         }
         stage('Deploy') {
